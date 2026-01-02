@@ -1,0 +1,68 @@
+Problem Statement 
+You are given N pastries, where each pastry has a certain number of cherries.
+You need to pack these pastries into boxes such that a box is called perfect if the sum of cherries in that box is divisible by 3.
+
+Rules:
+
+Each pastry can be used only once.
+A box can contain any number of pastries.
+Pastries can be arranged in any order.
+Your task is to find the maximum number of perfect boxes that can be formed.
+
+Input Format
+
+The first line contains an integer N — the number of pastries.
+The second line contains N integers, where each integer represents the number of cherries on a pastry.
+
+Output Format:
+Print a single integer — the maximum number of perfect boxes.
+
+Constraints:
+
+1 ≤ N ≤ 10⁵
+0 ≤ cherries ≤ 10⁹
+
+Sample Input:
+7
+3 1 6 4 7 5 2
+
+Sample Output:
+4
+
+Explanation:
+
+The pastries can be grouped into boxes such that the sum of cherries in each box is divisible by 3.
+The maximum number of such perfect boxes that can be formed is 4.
+
+// Java Code
+
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+         Scanner sc = new Scanner(System.in);
+         int N = sc.nextInt();
+         int count0 = 0;
+         int count1 = 0;
+         int count2 = 0;
+         for(int i=0; i<N; i++) {
+         int x = sc.nextInt() % 3;
+         if (x == 1)
+            count0++;
+         else if(x == 2) 
+            count1++;
+        else
+            count2++;
+         }
+         int boxes = 0;
+         boxes += count0;
+         int pair = Math.min(count1, count2);
+         int boxes += pair;
+         count1 -= pair;
+         count2 -= pair;
+         boxes += count1 / 3;
+         boxes += count2 / 3;
+         System.out.println(boxes);
+         sc.close();
+      }
+}
+             
