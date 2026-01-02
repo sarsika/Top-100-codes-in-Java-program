@@ -1,0 +1,71 @@
+Description:
+
+In a busy warehouse packing station, workers arrange boxes on a conveyor belt.
+Each box has a unique lowercase label like "a", "b", "c", etc., and the full arrangement of boxes forms a string such as "abcde".
+Due to the conveyor belt movement, the boxes keep rotating in a cycle.
+The rule of movement is simple:
+ The leftmost box moves to the rightmost position after each shift.
+So, "abcde" becomes "bcdea" after one shift.
+Now, the manager wants to check whether a new arrangement of boxes can be achieved only by rotating (shifting) the conveyor belt — without changing positions manually.
+For example, if the current arrangement is "abcde" and the target arrangement is "cdeab",
+After two shifts:
+1st shift → "bcdea"
+2nd shift → "cdeab"
+The target layout is possible through shifting — so it's valid.
+But if the target arrangement is "abced", no matter how many times you rotate, you can never form that exact order — so it's not valid.
+Your task is to help the warehouse automation system check whether the target layout is achievable using only conveyor belt rotations.
+
+Remember:
+ No box can be removed or inserted.
+ Only circular shifts are allowed.
+ Rotation must preserve character sequence — just shifted.
+So, can one box arrangement be transformed into another using only cyclic shifts?
+
+Constraints:
+Constraint	Description
+1 ≤ s.length ≤ 100	Minimum and maximum length of string s
+1 ≤ goal.length ≤ 100	Minimum and maximum length of string goal
+Character type	Both strings consist only of lowercase English letters
+Length condition	If s.length != goal.length, return false immediately
+Operation allowed	Only cyclic left shift (move first character to the end)
+No deletion/insertion allowed	Only character rotation, no rearrangement
+
+Example:
+Input:
+
+s = "abcde"
+goal = "cdeab"
+ 
+Output:
+ true
+
+Explanation:
+Perform rotations on s:
+
+Rotation Step	Result
+Original	abcde
+1st shift	bcdea
+2nd shift	cdeab
+After 2 shifts, it matches goal.
+ So, Output: true
+
+// Java Code
+
+import java.util.*;
+public class Main {
+    public static boolean rotateString(String S, String goal) {
+        if(S.length() != goal.length()) {
+           return false;
+        }
+     String Doubles = S+S;
+     return Doubles.contains(goal);
+  }
+  public static void main(String[] args) {
+      Scanner sc  = new Scanner(System.in);
+      String S = sc.nextLine();
+      String goal = sc.nextLine();
+      boolean result = (rotate String S, goal);
+      System.out.println(result);
+      sc.close();
+}
+}
