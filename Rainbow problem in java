@@ -1,0 +1,78 @@
+Problem Statement: Maximum Number of Rainbows
+You are given a string S consisting of lowercase English letters.
+A rainbow can be formed only if the string contains all the following characters:
+v i b g y o r
+Each character can be used only once in forming a rainbow.
+
+Your task is to find the maximum number of rainbows that can be formed using the characters of the given string.
+
+Rules:
+
+Each character in the string can be used at most once.
+Characters can be used in any order.
+Extra characters in the string can be ignored.
+A rainbow is valid only if all 7 characters (v, i, b, g, y, o, r) are present.
+
+Input Format:
+A single line containing the string S.
+
+Output Format:
+Print a single integer representing the maximum number of rainbows that can be formed.
+
+Constraints:
+
+1 ≤ length of S ≤ 10⁵
+S contains only lowercase English letters.
+
+Sample Input 1:
+vbgiybro
+
+Sample Output 1:
+1
+
+Sample Input 2:
+vvbggybbrro
+
+Sample Output 2:
+0
+
+Explanation:
+
+To form one rainbow, all characters v, i, b, g, y, o, r must be present at least once.
+The maximum number of rainbows is determined by the minimum frequency of these characters in the string.
+
+// Java Code 
+
+import java.util.*;
+pubic class Main {
+    public static void main(String[] args) {
+          Scanner sc = new Scanner(System.in);
+          String S = sc.nextLine();
+          int v=0, i=0, b=0, g=0, y=0, o=0, r=0;
+          for(char ch : s.toCharArray()) {
+               if(c == 'v')
+                  v++;
+               else if(c == 'i')
+                   i++;
+               else if(c == 'b')
+                    b++;
+              else if(c == 'g')
+                    g++;
+              else if(c == 'y')
+                   y++;
+              else if(c == 'o')
+                    o++;
+              else if(c == 'r')
+                    r++;
+           }
+           int ans = v;
+           ans = Math.min(ans, i);
+           ans = Math.min(ans, b);
+           ans = Math.min(ans, g);
+           ans = Math.min(ans, y);
+           ans = Math.min(ans, o);
+           ans = Math.min(ans, r);
+           System.ou.println(ans);
+           sc.close();
+       }
+}
