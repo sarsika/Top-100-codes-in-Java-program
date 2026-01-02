@@ -1,0 +1,82 @@
+Problem Statement:
+
+You are given a string s consisting of lowercase English alphabets only.
+Each character in the string has a weight based on its position in the English alphabet:
+'a' → 1
+'b' → 2
+'c' → 3
+'z' → 26
+
+Your task is to find the smallest index i such that:
+The sum of weights of characters to the left of index i
+is equal to The sum of weights of characters to the right of index i
+👉 The character at index i must not be included in either sum.
+If no such index exists, print -1.
+
+🔹 Input Format
+A single string s
+
+🔹 Output Format
+Print the required index
+If no valid index exists, print -1
+
+🔹 Constraints
+1 ≤ length of s ≤ 10^5
+
+s contains only lowercase English letters
+
+🔹 Example 1
+
+Input:
+bac
+
+Output:
+1
+
+Explanation:
+
+Left sum (index 1): weight of 'b' = 2
+Right sum (index 1): weight of 'c' = 3
+Index 1 is the first index where both sums are equal.
+
+🔹 Example 2
+
+Input:
+abcd
+
+Output:
+-1
+
+🔹 Example 3
+
+Input:
+a
+
+Output:
+0
+
+// Java Code
+
+import java.util.*;
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        String S = sc.next();
+        int totalSum = 0;
+        for(char c : s.CharAtArray()) {
+             totalSum += c - 'a' + 1);
+        }
+            int leftSum = 0;
+            for(int i=0; i<S.length(); i++) {
+                int currentWeight = s.charAt(i) - 'a'+ 1;
+                int rightSum = totalSum - leftSum - currentWeigth;
+                 if(leftSum == rightSum) {
+                     System.out.println(i);
+                    return;
+                }
+                leftSum += currentWeight;
+           }
+           System.out.println(-1);
+     }
+}
+        
