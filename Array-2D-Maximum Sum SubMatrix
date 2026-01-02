@@ -1,0 +1,91 @@
+Description:
+
+A financial analytics company called ProfitMatrix Pvt. Ltd. analyzes the daily profit/loss data of different departments across multiple branches.
+The data is stored in a 2D matrix, where:
+Each row represents a department
+Each column represents revenue/loss for that day
+Positive numbers indicate profit, and negative numbers indicate loss
+The company wants to find the most profitable continuous block of days for a group of departments.
+This continuous block forms a submatrix (rectangle) inside the original matrix.
+Your task is to find the submatrix with the maximum total profit (sum of all its elements);
+ A valid submatrix must:
+Include consecutive rows and columns
+Contain at least one element
+Because rectangular in shape
+The company needs only the maximum sum, not the submatrix itself.
+
+Constraints:
+Constraint	Description
+
+1 ≤ R, C ≤ 200	R = number of rows, C = number of columns
+−10⁴ ≤ mat[i][j] ≤ 10⁴	Profit or loss value
+At least one positive or negative value	(Matrix can't be empty)
+Output	Maximum submatrix sum (integer)
+Time Complexity Desired	≤ O(R² × C)
+
+Example:
+
+Input:
+mat = [ [ 1, 2, -1, -4, -20],
+[-8, -3, 4, 2, 1], 
+[ 3, 8, 10, 1, 3],
+[-4, -1, 1, 7, -6] ]
+ 
+Output:
+29
+
+Explanation:
+The maximum sum submatrix is:
+
+[4, 2, 1]
+[10, 1, 3]
+  [1, 7, -6]
+If we add all the elements in this rectangle:
+
+4 + 2 + 1 + 10 + 1 + 3 + 1 + 7 + (-6) = 29
+
+Since this is the highest sum possible among all rectangular sections,
+The maximum submatrix sum = 29
+
+// Java Code
+
+import java.util.*;
+public class Main {
+public static void main(String[] args) {
+      Scanner sc = new Scanner(System.in);
+      int R = sc.nextInt();
+      int C = sc.nextInt();
+      int[][] mat = new int[R][C];
+      for(int i=0; i<R; i++) {
+           for(int j=0; j<C; j++) {
+                     mat[i][j] = sc.nextInt();
+            }
+      }
+int maxSum = Integer.MIN_VALUE;
+for(int startRow=0; startRow<R; startRow++) {
+    for(int startCol=0; startCol<C; startCol++) {
+        for(int EndRow=0; EndRow<R; EndRow++) {
+            for(int EndCol=0; EndCol<C; EndCol++) {
+                int currentSum = 0;
+                for(int i=startRow; i<EndRow; i++) {
+                    for(int j=startCol; j<EndCol; j++) {
+                        currentSum += mat[i][j];
+                        maxSum = Math.max(maxSum, currentSum);
+                     }
+                 }
+              }
+          }
+      }
+   }
+   System.out.println(maxSum);
+   sc.close();
+}
+}
+
+
+
+
+
+
+
+
